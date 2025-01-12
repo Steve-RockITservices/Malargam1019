@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
-Object = "{FAEEE763-117E-101B-8933-08002B2F4F5A}#1.1#0"; "DBLIST32.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
+Object = "{FAEEE763-117E-101B-8933-08002B2F4F5A}#1.1#0"; "dblist32.ocx"
 Begin VB.Form salebilled 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Sales edition"
@@ -16,6 +16,59 @@ Begin VB.Form salebilled
    ScaleHeight     =   8115
    ScaleWidth      =   13410
    ShowInTaskbar   =   0   'False
+   Begin VB.TextBox Txttotal1 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   345
+      Left            =   1320
+      MaxLength       =   10
+      TabIndex        =   18
+      TabStop         =   0   'False
+      Text            =   "Text3"
+      Top             =   7560
+      Width           =   1440
+   End
+   Begin VB.TextBox Txtfrom 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   9960
+      TabIndex        =   2
+      Text            =   "Txtfrom"
+      Top             =   360
+      Width           =   1215
+   End
+   Begin VB.TextBox Txtto 
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   11880
+      TabIndex        =   3
+      Text            =   "Txtto"
+      Top             =   360
+      Width           =   1215
+   End
    Begin VB.Data Data2 
       Caption         =   "Data1"
       Connect         =   "Access"
@@ -46,7 +99,7 @@ Begin VB.Form salebilled
       EndProperty
       Height          =   390
       Left            =   12030
-      TabIndex        =   11
+      TabIndex        =   13
       Top             =   7605
       Width           =   1125
    End
@@ -63,7 +116,7 @@ Begin VB.Form salebilled
       EndProperty
       Height          =   405
       Left            =   10695
-      TabIndex        =   10
+      TabIndex        =   12
       Top             =   7590
       Width           =   1230
    End
@@ -81,15 +134,15 @@ Begin VB.Form salebilled
       EndProperty
       Height          =   405
       Left            =   9420
-      TabIndex        =   5
+      TabIndex        =   6
       Top             =   7590
       Width           =   1170
    End
    Begin vb6projectProject1.salbilled bill1 
       Height          =   6045
       Left            =   165
-      TabIndex        =   4
-      Top             =   1290
+      TabIndex        =   7
+      Top             =   1200
       Width           =   13035
       _ExtentX        =   22992
       _ExtentY        =   10663
@@ -106,13 +159,13 @@ Begin VB.Form salebilled
    End
    Begin MSDBCtls.DBCombo DBCombo1 
       Bindings        =   "th2-11.frx":0000
-      Height          =   360
+      Height          =   345
       Left            =   1695
       TabIndex        =   0
       Top             =   210
       Width           =   4500
       _ExtentX        =   7938
-      _ExtentY        =   635
+      _ExtentY        =   609
       _Version        =   393216
       MatchEntry      =   -1  'True
       Style           =   2
@@ -139,7 +192,7 @@ Begin VB.Form salebilled
       _ExtentY        =   582
       _Version        =   393216
       CustomFormat    =   "dd/MM/yyyy"
-      Format          =   121962499
+      Format          =   95027203
       CurrentDate     =   37974
    End
    Begin VB.Data Data1 
@@ -159,7 +212,7 @@ Begin VB.Form salebilled
       Visible         =   0   'False
       Width           =   1365
    End
-   Begin VB.TextBox Text3 
+   Begin VB.TextBox Txttotal 
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   11.25
@@ -170,23 +223,23 @@ Begin VB.Form salebilled
          Strikethrough   =   0   'False
       EndProperty
       Height          =   345
-      Left            =   1065
+      Left            =   3000
       MaxLength       =   10
-      TabIndex        =   6
+      TabIndex        =   8
       TabStop         =   0   'False
       Text            =   "Text3"
-      Top             =   7575
+      Top             =   7560
       Width           =   1440
    End
    Begin MSDBCtls.DBCombo DBCombo2 
       Bindings        =   "th2-11.frx":0014
-      Height          =   360
+      Height          =   345
       Left            =   1710
-      TabIndex        =   2
+      TabIndex        =   4
       Top             =   795
       Width           =   4500
       _ExtentX        =   7938
-      _ExtentY        =   635
+      _ExtentY        =   609
       _Version        =   393216
       MatchEntry      =   -1  'True
       Style           =   2
@@ -206,15 +259,51 @@ Begin VB.Form salebilled
    Begin MSComCtl2.DTPicker DTPicker2 
       Height          =   330
       Left            =   7260
-      TabIndex        =   3
+      TabIndex        =   5
       Top             =   795
       Width           =   1395
       _ExtentX        =   2461
       _ExtentY        =   582
       _Version        =   393216
       CustomFormat    =   "dd/MM/yyyy"
-      Format          =   121962499
+      Format          =   95027203
       CurrentDate     =   37974
+   End
+   Begin VB.Label Label6 
+      Caption         =   "From :"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   285
+      Left            =   9240
+      TabIndex        =   17
+      Top             =   360
+      Width           =   675
+   End
+   Begin VB.Label Label7 
+      Caption         =   "To :"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   285
+      Left            =   11280
+      TabIndex        =   16
+      Top             =   360
+      Width           =   675
    End
    Begin VB.Label Label5 
       Caption         =   "Date  :"
@@ -230,7 +319,7 @@ Begin VB.Form salebilled
       ForeColor       =   &H00C00000&
       Height          =   285
       Left            =   6540
-      TabIndex        =   13
+      TabIndex        =   15
       Top             =   810
       Width           =   675
    End
@@ -248,7 +337,7 @@ Begin VB.Form salebilled
       ForeColor       =   &H00C00000&
       Height          =   285
       Left            =   225
-      TabIndex        =   12
+      TabIndex        =   14
       Top             =   870
       Width           =   1140
    End
@@ -266,7 +355,7 @@ Begin VB.Form salebilled
       ForeColor       =   &H00C00000&
       Height          =   270
       Left            =   255
-      TabIndex        =   9
+      TabIndex        =   11
       Top             =   7575
       Width           =   750
    End
@@ -284,7 +373,7 @@ Begin VB.Form salebilled
       ForeColor       =   &H00C00000&
       Height          =   285
       Left            =   195
-      TabIndex        =   8
+      TabIndex        =   10
       Top             =   240
       Width           =   870
    End
@@ -302,7 +391,7 @@ Begin VB.Form salebilled
       ForeColor       =   &H00C00000&
       Height          =   285
       Left            =   6525
-      TabIndex        =   7
+      TabIndex        =   9
       Top             =   285
       Width           =   675
    End
@@ -320,28 +409,28 @@ Dim I As Integer
 Dim temprow As Integer
 Dim tempcol As Integer
 
-Text3 = 0
+Txttotal = 0
 
 temprow = bill1.billrow
 tempcol = bill1.billcol
 
 For I = 1 To bill1.billrows - 1
 bill1.billrow = I
-bill1.billcol = 3
+bill1.billcol = 5
 If bill1.Billcoltext <> "" Then
 If IsNumeric(bill1.Billcoltext) Then
-Text3 = Text3 + Val(bill1.Billcoltext)
+Txttotal = Val(Txttotal) + Val(bill1.Billcoltext)
 End If
 End If
 Next
-Text3 = Format(Val(Text3), "0.000")
+Txttotal = Format(Val(Txttotal), "0.000")
 bill1.billleftcol = 0
 bill1.billrow = temprow
 bill1.billcol = tempcol
 End Sub
 
 Private Sub Command1_Click()
-If Not IsNumeric(Text3) Or Text3 = "" Then
+If Not IsNumeric(Txttotal) Or Txttotal = "" Then
     MsgBox "Invalid Bill amount", vbInformation
     Exit Sub
 End If
@@ -511,7 +600,7 @@ For I = 1 To bill1.billrows - 1
     End If
 Next
 
-Text3 = ""
+Txttotal = ""
 
 
 bill1.billcol = 2
@@ -532,6 +621,8 @@ End Sub
 
 Private Sub DTPicker1_LostFocus()
 Dim d As database, r As Recordset, r1 As Recordset, sql As String
+Dim total As Single, total1 As Single
+
 sql = "select * from sales where item='" + DBCombo1.BoundText + "' and "
 sql = sql + " sales.date=#" & DTPicker1.Month & "/" & DTPicker1.day & "/" & DTPicker1.year & "#"
 Set d = OpenDatabase(DBPATH)
@@ -562,10 +653,12 @@ If Not r.NoMatch Then
         End If
         bill1.billcol = 3
         bill1.Billcoltext = Format(r!qnty, "0.000")
+        total1 = total1 + Val(bill1.Billcoltext)
         bill1.billcol = 4
         bill1.Billcoltext = Format(r!rate, "0.00")
         bill1.billcol = 5
         bill1.Billcoltext = Format(r!rate * r!qnty, "0.00")
+        total = total + Val(bill1.Billcoltext)
         
         If bill1.billrow < bill1.billrows - 1 Then
         bill1.billrow = bill1.billrow + 1
@@ -580,6 +673,10 @@ bill1.billcol = 2
 bill1.billrow = 1
 bill1.postext1
 bill1.text1text
+
+Txttotal = Format(total, "0.00")
+Txttotal1 = Format(total1, "0.000")
+
 End Sub
 
 Private Sub Form_Activate()
@@ -630,10 +727,12 @@ bill1.billcol = 2
 bill1.billleftcol = 0
 bill1.billtextpos = 100
 
-Text3 = ""
+Txttotal = ""
 DTPicker1 = TRANSACTION_DATE
+DTPicker2 = TRANSACTION_DATE
 
-
+Txtfrom = ""
+Txtto = ""
 'Text6 = ""
 'Text7 = ""
 End Sub
@@ -649,3 +748,132 @@ Private Sub SSCommand3_Click()
 
 End Sub
 
+Private Sub Txtfrom_LostFocus()
+Dim d As database, r As Recordset, r1 As Recordset, sql As String
+Dim total As Single, total1 As Single
+
+sql = "select * from sales where item='" + DBCombo1.BoundText + "' and "
+sql = sql + " sales.date=#" & DTPicker1.Month & "/" & DTPicker1.day & "/" & DTPicker1.year & "# and sales.voucher>=" & Val(Txtfrom)
+Set d = OpenDatabase(DBPATH)
+Set r1 = d.OpenRecordset("accounts")
+r1.Index = "ac_code"
+
+If Txtfrom = "" Then
+    Exit Sub
+End If
+
+Set r = d.OpenRecordset(sql)
+
+bill1.billrows = 1
+bill1.billrows = 2
+bill1.billrow = 1
+
+DTPicker2 = DTPicker1
+DBCombo2 = DBCombo1
+
+If Not r.NoMatch Then
+    Do While Not r.EOF
+        bill1.billcol = 0
+        bill1.Billcoltext = r!voucher
+        bill1.billcol = 1
+        bill1.Billcoltext = r!customer
+        
+        bill1.billcol = 2
+        
+        r1.Seek "=", r!customer
+        If Not r1.NoMatch Then
+            bill1.Billcoltext = r1!ac_name
+        End If
+        bill1.billcol = 3
+        bill1.Billcoltext = Format(r!qnty, "0.000")
+        total1 = total1 + Val(bill1.Billcoltext)
+        bill1.billcol = 4
+        bill1.Billcoltext = Format(r!rate, "0.00")
+        bill1.billcol = 5
+        bill1.Billcoltext = Format(r!rate * r!qnty, "0.00")
+        total = total + Val(bill1.Billcoltext)
+        
+        If bill1.billrow < bill1.billrows - 1 Then
+        bill1.billrow = bill1.billrow + 1
+        Else
+        bill1.billrows = bill1.billrows + 1
+        bill1.billrow = bill1.billrow + 1
+        End If
+        r.MoveNext
+    Loop
+End If
+bill1.billcol = 2
+bill1.billrow = 1
+bill1.postext1
+bill1.text1text
+
+Txttotal = Format(total, "0.00")
+Txttotal1 = Format(total1, "0.000")
+
+End Sub
+
+Private Sub Txtto_LostFocus()
+Dim d As database, r As Recordset, r1 As Recordset, sql As String
+Dim total As Single, total1 As Single
+
+If Txtto <> "" Then
+If Val(Txtfrom) > Val(Txtto) Then
+    MsgBox " From should be below to", vbCritical
+    Exit Sub
+End If
+End If
+
+
+sql = "select * from sales where item='" + DBCombo1.BoundText + "' and "
+sql = sql + " sales.date=#" & DTPicker1.Month & "/" & DTPicker1.day & "/" & DTPicker1.year & "# and sales.voucher>=" & Val(Txtfrom) & " and sales.voucher<=" & Val(Txtto)
+Set d = OpenDatabase(DBPATH)
+Set r1 = d.OpenRecordset("accounts")
+r1.Index = "ac_code"
+
+Set r = d.OpenRecordset(sql)
+
+bill1.billrows = 1
+bill1.billrows = 2
+bill1.billrow = 1
+
+DTPicker2 = DTPicker1
+DBCombo2 = DBCombo1
+
+If Not r.NoMatch Then
+    Do While Not r.EOF
+        bill1.billcol = 0
+        bill1.Billcoltext = r!voucher
+        bill1.billcol = 1
+        bill1.Billcoltext = r!customer
+        
+        bill1.billcol = 2
+        
+        r1.Seek "=", r!customer
+        If Not r1.NoMatch Then
+            bill1.Billcoltext = r1!ac_name
+        End If
+        bill1.billcol = 3
+        bill1.Billcoltext = Format(r!qnty, "0.000")
+        total1 = total1 + Val(bill1.Billcoltext)
+        bill1.billcol = 4
+        bill1.Billcoltext = Format(r!rate, "0.00")
+        bill1.billcol = 5
+        bill1.Billcoltext = Format(r!rate * r!qnty, "0.00")
+        total = total + Val(bill1.Billcoltext)
+        If bill1.billrow < bill1.billrows - 1 Then
+        bill1.billrow = bill1.billrow + 1
+        Else
+        bill1.billrows = bill1.billrows + 1
+        bill1.billrow = bill1.billrow + 1
+        End If
+        r.MoveNext
+    Loop
+End If
+bill1.billcol = 2
+bill1.billrow = 1
+bill1.postext1
+bill1.text1text
+
+Txttotal = Format(total, "0.000")
+Txttotal1 = Format(total1, "0.00")
+End Sub
